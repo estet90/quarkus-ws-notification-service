@@ -14,8 +14,8 @@ public class RedisClient {
     @Inject
     RedisDataSource reactiveRedisDataSource;
 
-    public void publish(Event event, String channel) {
-        reactiveRedisDataSource.pubsub(Event.class).publish(channel, event);
+    public Uni<Void> publish(Event event, String channel) {
+        return reactiveRedisDataSource.getReactive().pubsub(Event.class).publish(channel, event);
     }
 
     public Uni<Set<String>> getChannelsByKey(String key) {

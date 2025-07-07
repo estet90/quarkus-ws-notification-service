@@ -25,7 +25,7 @@ public class WsRequestHandleOperation {
     private static final Logger LOGGER = LoggerFactory.getLogger(WsRequestHandleOperation.class);
 
     public void process(WebSocketConnection connection, WsRequest wsRequest) {
-        LOGGER.info("WsRequestHandleOperation.process.in\nconnection={}\nwsRequest={}", connection, wsRequest);
+        LOGGER.info("WsRequestHandleOperation.process.in\nconnection={}\nwsRequest={}", connection.id(), wsRequest);
         final String channel = instanceGuidHolder.getInstanceGuid();
         final String key = wsRequest.key();
         switch (wsRequest.type()) {

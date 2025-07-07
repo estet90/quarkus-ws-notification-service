@@ -15,6 +15,7 @@ dependencies {
             platform("io.quarkus:quarkus-bom:3.24.2"),
             "io.quarkus:quarkus-websockets-next",
             "io.quarkus:quarkus-redis-client",
-            "io.quarkus:quarkus-messaging-kafka"
+            "io.quarkus:quarkus-messaging-kafka",
+            "io.quarkus:quarkus-config-yaml"
     )
 }

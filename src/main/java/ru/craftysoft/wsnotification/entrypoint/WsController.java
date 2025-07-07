@@ -1,7 +1,6 @@
 package ru.craftysoft.wsnotification.entrypoint;
 
 import io.quarkus.arc.All;
-import io.quarkus.runtime.Startup;
 import io.quarkus.websockets.next.OnClose;
 import io.quarkus.websockets.next.OnTextMessage;
 import io.quarkus.websockets.next.WebSocket;
@@ -13,7 +12,6 @@ import ru.craftysoft.wsnotification.service.WsCloseHandler;
 
 import java.util.List;
 
-@Startup
 @WebSocket(path = "/ws/notification")
 public class WsController {
 

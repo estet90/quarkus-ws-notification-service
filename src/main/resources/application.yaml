@@ -1,9 +1,6 @@
-'%dev':
-  quarkus:
-    devserices:
-      enabled: false
-
 quarkus:
+  devserices:
+    enabled: false
   redis:
     hosts: redis://localhost:6379
 
@@ -17,7 +14,7 @@ mp:
         group:
           id: ${quarkus.application.name}
         value:
-          deserializer: ru.craftysoft.wsgateway.util.EventDeserializer
+          deserializer: ru.craftysoft.wsnotification.util.EventDeserializer
         topics: event-handle
         connector: smallrye-kafka
         failure-strategy: ignore

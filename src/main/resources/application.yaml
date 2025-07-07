@@ -1,0 +1,27 @@
+'%dev':
+  quarkus:
+    devserices:
+      enabled: false
+
+quarkus:
+  redis:
+    hosts: redis://localhost:6379
+
+mp:
+  messaging:
+    incoming:
+      event-handle:
+        auto:
+          offset:
+            reset: latest
+        group:
+          id: ${quarkus.application.name}
+        value:
+          deserializer: ru.craftysoft.wsgateway.util.EventDeserializer
+        topics: event-handle
+        connector: smallrye-kafka
+        failure-strategy: ignore
+
+kafka:
+  bootstrap:
+    servers: localhost:9092

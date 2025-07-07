@@ -1,0 +1,20 @@
+plugins {
+    id "java"
+    id "io.quarkus" version "3.24.2"
+}
+
+group = "ru.craftysoft.wsgateway"
+version = "1.0.0"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(
+            platform("io.quarkus:quarkus-bom:3.24.2"),
+            "io.quarkus:quarkus-websockets-next",
+            "io.quarkus:quarkus-redis-client",
+            "io.quarkus:quarkus-messaging-kafka"
+    )
+}

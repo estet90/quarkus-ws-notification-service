@@ -23,7 +23,11 @@ public class WsController {
 
     @OnTextMessage
     public void onMessage(WebSocketConnection connection, WsRequest wsRequest) {
-        wsRequestHandleOperation.process(connection, wsRequest);
+        try {
+            wsRequestHandleOperation.process(connection, wsRequest);
+        } catch (Exception e) {
+            connection.close().subscribeAsCompletionStage();
+        }
     }
 
     @OnClose

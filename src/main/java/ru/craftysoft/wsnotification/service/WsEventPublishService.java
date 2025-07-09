@@ -19,12 +19,8 @@ public class WsEventPublishService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WsEventPublishService.class);
 
-    public void publish(Event event) {
+    public Set<WebSocketConnection> publish(Event event) {
         Set<WebSocketConnection> connections = cacheService.getConnectionsByKey(event.key());
-        publish(event, connections);
-    }
-
-    public void publish(Event event, Set<WebSocketConnection> connections) {
         connections.forEach(connection -> connection.sendText(event.text())
                 .subscribe()
                 .with(io.smallrye.mutiny.vertx.UniHelper.NOOP));
@@ -32,6 +28,7 @@ public class WsEventPublishService {
                 .map(Connection::id)
                 .toList();
         LOGGER.info("WsEventPublishService.publish\nconnections={}\nevent={}", connectionIds, event);
+        return connections;
     }
 
 }

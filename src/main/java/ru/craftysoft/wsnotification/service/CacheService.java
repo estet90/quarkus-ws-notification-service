@@ -41,6 +41,8 @@ public class CacheService implements WsCloseHandler {
             keys.add(key);
             return keys;
         });
+        String channel = instanceGuidHolder.getInstanceGuid();
+        redisClient.addChannelToKey(key, channel);
     }
 
     public void removeData(WebSocketConnection wsConnection, String key) {

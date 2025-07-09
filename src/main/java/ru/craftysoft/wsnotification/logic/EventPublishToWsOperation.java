@@ -24,8 +24,7 @@ public class EventPublishToWsOperation {
     public void process(Event event) {
         try {
             LOGGER.info("EventPublishToWsOperation.process.in event={}", event);
-            Set<WebSocketConnection> connections = cacheService.getConnectionsByKey(event.key());
-            wsEventPublishService.publish(event, connections);
+            Set<WebSocketConnection> connections = wsEventPublishService.publish(event);
             LOGGER.info("EventPublishToWsOperation.process.out connections={}", connections);
         } catch (Exception e) {
             LOGGER.error("EventPublishToRedisOperation.process.thrown", e);
